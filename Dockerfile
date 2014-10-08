@@ -34,7 +34,7 @@ WORKDIR /snort
 RUN wget https://libdnet.googlecode.com/files/libdnet-1.12.tgz && \
 	tar xf libdnet-1.12.tgz
 WORKDIR libdnet-1.12
-RUN ./configure -q "CFLAGS=-fPIC" && \
+RUN ./configure "CFLAGS=-fPIC" && \
 	make install && \
 	ln -s /usr/local/lib/libdnet.1.0.1 /usr/lib/libdnet.1 
 
@@ -43,7 +43,7 @@ WORKDIR /snort
 RUN wget https://www.snort.org/downloads/snort/daq-2.0.2.tar.gz && \
 	tar xf daq-2.0.2.tar.gz
 WORKDIR daq-2.0.2
-RUN ./configure -q && \
+RUN ./configure && \
 	make install
 
 # Install snort
@@ -51,7 +51,7 @@ WORKDIR /snort
 RUN wget https://www.snort.org/downloads/snort/snort-2.9.6.2.tar.gz && \
 	tar xf snort-2.9.6.2.tar.gz
 WORKDIR snort-2.9.6.2
-RUN ./configure -q --enable-dbg --enable-dbg-msgs --enable-gdb && \
+RUN ./configure --enable-debug --enable-debug-msgs --enable-gdb && \
 	make install && \
 	ln -s /usr/local/bin/snort /usr/sbin/snort
 
